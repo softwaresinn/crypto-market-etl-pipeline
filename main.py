@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.concurrency import run_in_threadpool
 from services.binance import getCoins, getCurrentPrice, cleanData
+from services.cmc import getMetrics
 from models.db import init_db, upsert_coins, insert_prices
 
 app = FastAPI()
@@ -19,7 +20,10 @@ async def cleandata():
     coins, merged = await cleanData()
     return merged
 
-
+@app.get("/metrics")
+async def getmetrics():
+    metrics = await getMetrics()
+    return metrics
 
 @app.post("/etl/run")
 async def run_etl():

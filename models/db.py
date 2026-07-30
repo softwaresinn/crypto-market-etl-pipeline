@@ -14,6 +14,7 @@ def get_connection():
 CREATE_TABLES_SQL = """
 CREATE TABLE IF NOT EXISTS coins (
     symbol TEXT PRIMARY KEY,
+    name TEXT,
     base_asset TEXT NOT NULL,
     underlying_type TEXT,
     underlying_sub_type TEXT[],
@@ -28,6 +29,8 @@ CREATE TABLE IF NOT EXISTS prices (
     ts TIMESTAMP NOT NULL,
     UNIQUE(symbol, ts)
 );
+
+
 
 CREATE INDEX IF NOT EXISTS idx_prices_symbol_ts ON prices(symbol, ts DESC);
 """

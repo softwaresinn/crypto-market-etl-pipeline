@@ -12,7 +12,6 @@ async def getCoins():
         res = await client.get(BinanceUrl) #call to futures api
         res.raise_for_status() 
         data = res.json() #conversion of response into json
-       
 #Loop to iterate over all the data to clean and save into the list
         for i in data["symbols"]:
            # I put this condition to filter USDT pairs and active trading pairs on futures 
@@ -85,3 +84,8 @@ async def cleanData():
 
     print(f"Total merged: {len(merged)}")
     return coins,merged
+
+
+
+
+# key for coingecko CG-en4jNGLUAFBzhUAWUR1DZiJU
