@@ -1,9 +1,6 @@
 """
 DDL definitions and table-creation helpers.
 
-Layout follows a bronze/silver medallion convention:
-  - bronze.*  raw, untransformed API payloads (landing zone)
-  - public.*  cleaned/curated tables used by the API (coins, prices)
 """
 
 from db.session import get_connection
