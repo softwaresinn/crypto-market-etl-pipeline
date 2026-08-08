@@ -12,6 +12,8 @@ FROM bronze.binance_future_pairs b
 LEFT JOIN silver.metrics cmc 
     ON UPPER(b.raw_payload->>'baseAsset') = UPPER(cmc.symbol)
 WHERE b.raw_payload->>'status' = 'TRADING' AND b.raw_payload->>'quoteAsset'='USDT'
+ON CONFLICT (symbol) DO NOTHING;
+
 """
 
 

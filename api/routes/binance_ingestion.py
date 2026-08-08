@@ -32,3 +32,7 @@ async def ingest_binance_future_pairs():
     except Exception as e:
         logger.exception("Binance future pairs ingestion failed")
         raise HTTPException(status_code=500, detail=f"Binance Future Pairs Ingestion Failed: {str(e)}")
+
+
+
+
